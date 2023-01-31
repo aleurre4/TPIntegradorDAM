@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_detalle_tarjeta.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_idiomas.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_nueva_tarjeta.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_nuevo_idioma.xml" value="0.264" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_pimer.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_tarjetas.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/idiomascard.xml" value="0.20427350427350427" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/tarjetascard.xml" value="0.264" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacion"
+    app:startDestination="@id/pimerFragment">
+
+    <fragment
+        android:id="@+id/detalleTarjetaFragment"
+        android:name="com.jaime_urresti.tpintegrador.DetalleTarjetaFragment"
+        android:label="fragment_detalle_tarjeta"
+        tools:layout="@layout/fragment_detalle_tarjeta" />
+    <fragment
+        android:id="@+id/idiomasFragment"
+        android:name="com.jaime_urresti.tpintegrador.IdiomasFragment"
+        android:label="fragment_idiomas"
+        tools:layout="@layout/fragment_idiomas">
+        <action
+            android:id="@+id/action_idiomasFragment_to_tarjetasFragment"
+            app:destination="@id/tarjetasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pimerFragment"
+        android:name="com.jaime_urresti.tpintegrador.PrimerFragment"
+        android:label="fragment_pimer"
+        tools:layout="@layout/fragment_pimer">
+        <action
+            android:id="@+id/action_pimerFragment_to_idiomasFragment"
+            app:destination="@id/idiomasFragment" />
+        <action
+            android:id="@+id/action_pimerFragment_to_nuevaTarjetaFragment"
+            app:destination="@id/nuevaTarjetaFragment" />
+        <action
+            android:id="@+id/action_pimerFragment_to_nuevoIdiomaFragment"
+            app:destination="@id/nuevoIdiomaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nuevaTarjetaFragment"
+        android:name="com.jaime_urresti.tpintegrador.NuevaTarjetaFragment"
+        android:label="fragment_nueva_tarjeta"
+        tools:layout="@layout/fragment_nueva_tarjeta" />
+    <fragment
+        android:id="@+id/nuevoIdiomaFragment"
+        android:name="com.jaime_urresti.tpintegrador.NuevoIdiomaFragment"
+        android:label="fragment_nuevo_idioma"
+        tools:layout="@layout/fragment_nuevo_idioma" />
+    <fragment
+        android:id="@+id/tarjetasFragment"
+        android:name="com.jaime_urresti.tpintegrador.TarjetasFragment"
+        android:label="fragment_tarjetas"
+        tools:layout="@layout/fragment_tarjetas">
+        <action
+            android:id="@+id/action_tarjetasFragment_to_detalleTarjetaFragment"
+            app:destination="@id/detalleTarjetaFragment" />
+    </fragment>
+</navigation>
