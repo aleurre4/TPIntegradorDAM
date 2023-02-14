@@ -3,15 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/aleja/.gradle/caches/transforms-3/0a1e1205a4ad55603e56c0d69f6f4244/transformed/appcompat-1.5.0/res/layout/support_simple_spinner_dropdown_item.xml" value="0.1308876811594203" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/activity_main.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_detalle_tarjeta.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_idiomas.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_nueva_tarjeta.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_nuevo_idioma.xml" value="0.264" />
-        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_pimer.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_pimer.xml" value="0.19584569732937684" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/fragment_tarjetas.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/idiomascard.xml" value="0.20427350427350427" />
         <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/layout/tarjetascard.xml" value="0.264" />
+        <entry key="..\:/Users/aleja/AndroidStudioProjects/TPIntegrador/app/src/main/res/menu/menu.xml" value="0.4" />
       </map>
     </option>
   </component>

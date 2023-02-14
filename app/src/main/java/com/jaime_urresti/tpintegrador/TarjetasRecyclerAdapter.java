@@ -1,5 +1,6 @@
 package com.jaime_urresti.tpintegrador;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,15 @@ import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jaime_urresti.tpintegrador.modelo.Tarjeta;
+
 import java.util.List;
 
 public class TarjetasRecyclerAdapter extends RecyclerView.Adapter<TarjetasRecyclerAdapter.TarjetasViewHolder> {
 
 
-    private List<String> mDataSet;
-    public TarjetasRecyclerAdapter(List<String> myDataSet){
+    private List<Tarjeta> mDataSet;
+    public TarjetasRecyclerAdapter(List<Tarjeta> myDataSet){
 
         this.mDataSet = myDataSet;
 
@@ -30,7 +33,7 @@ public class TarjetasRecyclerAdapter extends RecyclerView.Adapter<TarjetasRecycl
             super(itemView);
 
             card = itemView.findViewById(R.id.cardTarjeta);
-            original = itemView.findViewById(R.id.textOriginalCard);
+            original = itemView.findViewById(R.id.textIdiomaCard);
             traduccion = itemView.findViewById(R.id.textTraduccionCard);
 
         }
@@ -58,16 +61,21 @@ public class TarjetasRecyclerAdapter extends RecyclerView.Adapter<TarjetasRecycl
         holder.traduccion.setTag(position);
         holder.card.setTag(position);
 
+        Tarjeta tarjeta = mDataSet.get(position);
 
-        holder.original.setText("How Are You Cabecita?");
-        holder.traduccion.setText("Como andas Cabecita?");
+        holder.original.setText(tarjeta.getTextoOrignal());
+        holder.traduccion.setText(tarjeta.getTextoTraduccion());
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",tarjeta.getIdTarjeta());
+
+
                 Navigation.findNavController((View)view.getParent()).navigate(
-                        R.id.action_tarjetasFragment_to_detalleTarjetaFragment);
+                        R.id.action_tarjetasFragment_to_detalleTarjetaFragment,bundle);
 
             }
         });

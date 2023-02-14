@@ -1,5 +1,6 @@
 package com.jaime_urresti.tpintegrador;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,15 @@ import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jaime_urresti.tpintegrador.modelo.Idioma;
+
 import java.util.List;
 
 public class IdiomasRecyclerAdapter extends RecyclerView.Adapter<IdiomasRecyclerAdapter.IdiomasViewHolder>{
 
 
-    private List<String> mDataSet;
-    public IdiomasRecyclerAdapter(List<String> myDataSet){
+    private List<Idioma> mDataSet;
+    public IdiomasRecyclerAdapter(List<Idioma> myDataSet){
 
         this.mDataSet = myDataSet;
 
@@ -29,7 +32,7 @@ public class IdiomasRecyclerAdapter extends RecyclerView.Adapter<IdiomasRecycler
             super(itemView);
 
             card = itemView.findViewById(R.id.cardTarjeta);
-            idioma = itemView.findViewById(R.id.textOriginalCard);
+            idioma = itemView.findViewById(R.id.textIdiomaCard);
 
 
         }
@@ -56,17 +59,22 @@ public class IdiomasRecyclerAdapter extends RecyclerView.Adapter<IdiomasRecycler
         holder.idioma.setTag(position);
         holder.card.setTag(position);
 
+        Idioma idioma = mDataSet.get(position);
 
-        holder.idioma.setText(mDataSet.get(position));
+        holder.idioma.setText(idioma.getNombreIdioma());
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Navigation.findNavController((View)view.getParent()).navigate(
-                        R.id.action_idiomasFragment_to_tarjetasFragment);
 
-            }
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",idioma.getIdIdioma());
+                Navigation.findNavController((View)view.getParent()).navigate(
+                        R.id.action_idiomasFragment_to_tarjetasFragment,bundle);
+
+
+             }
         });
 
 

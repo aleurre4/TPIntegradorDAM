@@ -22,7 +22,7 @@
             android:paddingTop="15sp">
 
             <TextView
-                android:id="@+id/textOriginalCard"
+                android:id="@+id/textIdiomaCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"

@@ -3,17 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navegacion"
+    android:label="CARTAS DE IDIOMAS"
     app:startDestination="@id/pimerFragment">
 
     <fragment
         android:id="@+id/detalleTarjetaFragment"
         android:name="com.jaime_urresti.tpintegrador.DetalleTarjetaFragment"
-        android:label="fragment_detalle_tarjeta"
-        tools:layout="@layout/fragment_detalle_tarjeta" />
+        android:label="DETALLE TARJETA"
+        tools:layout="@layout/fragment_detalle_tarjeta">
+        <action
+            android:id="@+id/action_detalleTarjetaFragment_to_tarjetasFragment"
+            app:destination="@id/tarjetasFragment" />
+    </fragment>
     <fragment
         android:id="@+id/idiomasFragment"
         android:name="com.jaime_urresti.tpintegrador.IdiomasFragment"
-        android:label="fragment_idiomas"
+        android:label="TUS IDIOMAS"
         tools:layout="@layout/fragment_idiomas">
         <action
             android:id="@+id/action_idiomasFragment_to_tarjetasFragment"
@@ -22,7 +27,7 @@
     <fragment
         android:id="@+id/pimerFragment"
         android:name="com.jaime_urresti.tpintegrador.PrimerFragment"
-        android:label="fragment_pimer"
+        android:label="CARTAS DE IDIOMAS"
         tools:layout="@layout/fragment_pimer">
         <action
             android:id="@+id/action_pimerFragment_to_idiomasFragment"
@@ -37,17 +42,25 @@
     <fragment
         android:id="@+id/nuevaTarjetaFragment"
         android:name="com.jaime_urresti.tpintegrador.NuevaTarjetaFragment"
-        android:label="fragment_nueva_tarjeta"
-        tools:layout="@layout/fragment_nueva_tarjeta" />
+        android:label="NUEVA TARJETA"
+        tools:layout="@layout/fragment_nueva_tarjeta">
+        <action
+            android:id="@+id/action_nuevaTarjetaFragment_to_pimerFragment"
+            app:destination="@id/pimerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nuevoIdiomaFragment"
         android:name="com.jaime_urresti.tpintegrador.NuevoIdiomaFragment"
-        android:label="fragment_nuevo_idioma"
-        tools:layout="@layout/fragment_nuevo_idioma" />
+        android:label="NUEVO IDIOMA"
+        tools:layout="@layout/fragment_nuevo_idioma">
+        <action
+            android:id="@+id/action_nuevoIdiomaFragment_to_pimerFragment"
+            app:destination="@id/pimerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tarjetasFragment"
         android:name="com.jaime_urresti.tpintegrador.TarjetasFragment"
-        android:label="fragment_tarjetas"
+        android:label="TUS TARJETAS"
         tools:layout="@layout/fragment_tarjetas">
         <action
             android:id="@+id/action_tarjetasFragment_to_detalleTarjetaFragment"

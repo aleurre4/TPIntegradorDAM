@@ -1,64 +1,215 @@
 package com.jaime_urresti.tpintegrador;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.os.Environment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DetalleTarjetaFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class DetalleTarjetaFragment extends Fragment {
+import com.jaime_urresti.tpintegrador.bdd.AppDatabase;
+import com.jaime_urresti.tpintegrador.databinding.FragmentDetalleTarjetaBinding;
+import com.jaime_urresti.tpintegrador.modelo.Tarjeta;
+import com.jaime_urresti.tpintegrador.util.ClaseUtil;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public DetalleTarjetaFragment() {
-        // Required empty public constructor
-    }
+public class DetalleTarjetaFragment extends Fragment implements MediaPlayer.OnCompletionListener {
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DetalleTarjetaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DetalleTarjetaFragment newInstance(String param1, String param2) {
-        DetalleTarjetaFragment fragment = new DetalleTarjetaFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+
+    private FragmentDetalleTarjetaBinding binding;
+    private Integer idTarjeta;
+    private Tarjeta tarjeta;
+    private boolean editar;
+    private MediaPlayer player;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
+
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
+        idTarjeta = getArguments().getInt("id");
+        editar = false;
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                tarjeta = AppDatabase.getInstance(getActivity().getApplicationContext()).tarjetaDAO().loadByIdTarjeta(idTarjeta);
+            }
+        };
+        Thread hilo = new Thread(runnable);
+        hilo.start();
+        try {
+            hilo.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
+        if(tarjeta == null){
+            tarjeta = new Tarjeta();
+        }
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detalle_tarjeta, container, false);
+        binding = FragmentDetalleTarjetaBinding.inflate(inflater,container,false);
+
+
+        binding.editarTarjetaOriginal.setText(tarjeta.getTextoOrignal());
+        binding.editarTarjetaTraduccion.setText(tarjeta.getTextoTraduccion());
+
+
+        binding.buttonEditarTarjeta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+             if(editar){
+                 editar=false;
+
+                 binding.editarTarjetaTraduccion.setEnabled(false);
+                 binding.editarTarjetaOriginal.setEnabled(false);
+
+
+                 tarjeta.setTextoOrignal(binding.editarTarjetaOriginal.getText().toString());
+                 tarjeta.setTextoTraduccion(binding.editarTarjetaTraduccion.getText().toString());
+
+                 Runnable runnable = new Runnable() {
+                     @Override
+                     public void run() {
+                   AppDatabase.getInstance(getActivity().getApplicationContext()).tarjetaDAO().update(tarjeta);
+                     }
+                 };
+                 Thread hilo = new Thread(runnable);
+                 hilo.start();
+                 try {
+                     hilo.join();
+                 } catch (InterruptedException e) {
+                     e.printStackTrace();
+                 }
+
+                 ClaseUtil.alerta("Tarjeta updateada perro", "renovada tarjeta",getActivity());
+
+
+                 binding.buttonEditarTarjeta.setText("Editar tarjeta");
+//                 Bundle bundle = new Bundle();
+//                 bundle.putInt("id",tarjeta.getIdIdioma());
+//                 Navigation.findNavController((View)view.getParent()).navigate(
+//                         R.id.action_detalleTarjetaFragment_to_tarjetasFragment,bundle);
+                     getActivity().onBackPressed();
+             }
+
+             else{
+                 editar=true;
+                 binding.editarTarjetaTraduccion.setEnabled(true);
+                 binding.editarTarjetaOriginal.setEnabled(true);
+                 binding.buttonEditarTarjeta.setText("Confirmar");
+             }
+
+
+
+
+            }
+        });
+
+        binding.floatingEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+                      AppDatabase.getInstance(getActivity().getApplicationContext()).tarjetaDAO().delete(tarjeta);
+                    }
+                };
+                Thread hilo = new Thread(runnable);
+                hilo.start();
+                try {
+                    hilo.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                ClaseUtil.alerta("Tarjeta eliminada tigreee", "rip tarjeta",getActivity());
+
+
+
+//                Bundle bundle = new Bundle();
+//                bundle.putInt("id",tarjeta.getIdIdioma());
+//                Navigation.findNavController((View)view.getParent()).navigate(
+//                        R.id.action_detalleTarjetaFragment_to_tarjetasFragment,bundle);
+
+                getActivity().onBackPressed();
+
+
+            }
+        });
+
+
+        binding.floatingDetallePlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reproducir();
+
+            }})
+
+
+
+        ;
+
+
+
+        return binding.getRoot();
+    }
+
+    public void reproducir() {
+
+        player = new MediaPlayer();
+        player.setOnCompletionListener(this);
+//        File path = new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getPath());
+        try {
+            player.setDataSource(getActivity().getExternalFilesDir(Environment.DIRECTORY_MUSIC).getPath() + "/" + tarjeta.getAudio());
+            player.prepare();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        player.start();
+        binding.buttonEditarTarjeta.setEnabled(false);
+        binding.floatingEliminar.setEnabled(false);
+        binding.floatingDetallePlay.setEnabled(false);
+
+    }
+
+    public void onCompletion(MediaPlayer mp) {
+        binding.buttonEditarTarjeta.setEnabled(true);
+        binding.floatingEliminar.setEnabled(true);
+        binding.floatingDetallePlay.setEnabled(true);
+
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item=menu.findItem(R.id.itemBuscarMenu);
+        if(item!=null)
+            item.setVisible(false);
     }
 }

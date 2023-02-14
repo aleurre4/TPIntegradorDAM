@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NuevoIdiomaFragment" >
+    tools:context=".NuevoIdiomaFragment">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,14 +13,14 @@
         android:text="Idioma"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textInputEditText2"
+        app:layout_constraintEnd_toStartOf="@+id/textInputNuevoIdioma"
         app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.334" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonAgregarIdioma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aceptar"
@@ -32,10 +32,9 @@
         app:layout_constraintVertical_bias="0.929" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/textInputNuevoIdioma"
         android:layout_width="165dp"
         android:layout_height="50dp"
-        android:hint="hint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.849"

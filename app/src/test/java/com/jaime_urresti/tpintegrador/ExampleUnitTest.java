@@ -14,4 +14,35 @@ public class ExampleUnitTest {
     public void addition_isCorrect() {
         assertEquals(4, 2 + 2);
     }
+
+
+    @Test
+    public void nivelPrincipianteCorrecto() {
+
+        Integer cantidadTarjetas = 0;
+        Integer cantidadIdiomas = 0;
+
+        Integer nivel = PrimerFragment.calcularNivel(cantidadIdiomas,cantidadTarjetas);
+
+        Integer esperado = 0;
+
+        assertEquals(esperado, nivel);
+    }
+
+    @Test
+    public void nivelMessiCorrecto() {
+        Integer cantidadTarjetas = 25;
+        Integer cantidadIdiomas = 6;
+
+        Integer nivel = PrimerFragment.calcularNivel(cantidadIdiomas,cantidadTarjetas);
+        Integer esperado = 4;
+
+        assertEquals(esperado, nivel);
+    }
+
+
+
+
+
+
 }
