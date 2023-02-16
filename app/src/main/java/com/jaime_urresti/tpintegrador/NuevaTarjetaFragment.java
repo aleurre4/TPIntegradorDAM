@@ -163,7 +163,7 @@ public class NuevaTarjetaFragment extends Fragment implements MediaPlayer.OnComp
                     }
                 });
 
-                ClaseUtil.alerta("Tarjeta creada flama flama my bro", "Tarjeta CREADA",getActivity());
+                ClaseUtil.alerta("Tarjeta creada con exito", "TARJETA CREADA",getActivity());
                 getActivity().onBackPressed();
 
 
@@ -181,7 +181,7 @@ public class NuevaTarjetaFragment extends Fragment implements MediaPlayer.OnComp
                         grabar();
                         grabando= true;
                     }else {
-                        System.out.println("NO HAY PERMISOS MAESTRO");
+                        System.out.println("NO HAY PERMISOS");
                     }
                 }else{
                     detener();

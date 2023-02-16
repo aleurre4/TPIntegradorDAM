@@ -106,7 +106,7 @@ public class NuevoIdiomaFragment extends Fragment {
                             }
                         });
 
-                ClaseUtil.alerta("idioma creada flama flama tigraso", "Idioma CREADo",getActivity());
+                ClaseUtil.alerta("Idioma creado con exito", "IDIOMA CREADO",getActivity());
                  getActivity().onBackPressed();
 
 

@@ -14,7 +14,7 @@ public class ClaseUtil {
             AlertDialog.Builder builder= new AlertDialog.Builder(activity);
             builder.setTitle(titulo);
             builder.setMessage(cadena);
-            builder.setPositiveButton("Joya maestro",null);
+            builder.setPositiveButton("OK",null);
             builder.create();
             builder.show();
         }catch (Exception e){

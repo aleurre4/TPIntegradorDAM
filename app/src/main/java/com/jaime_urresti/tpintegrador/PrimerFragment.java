@@ -48,20 +48,17 @@ public class PrimerFragment extends Fragment {
         else if(cantIdiomas >= 5 && cantTarjetas > 20){
             return 4;
         }
-        else if(cantIdiomas >= 2 && cantTarjetas > 8){
+        else if(cantIdiomas >= 2 && cantTarjetas >= 15){
             return 3;
         }
-        else if(cantIdiomas == 1 && cantTarjetas > 10){
+        else if(cantIdiomas >= 1 && cantTarjetas > 10){
             return 2;
         }
-
-        else if(cantIdiomas == 1 && cantTarjetas > 1){
+        else {
             return 1;
         }
 
 
-
-return 0;
 
 
 
@@ -101,13 +98,14 @@ return 0;
         binding.textNumTarjetas.setText(cantTarjetas + "");
 
 
-        nivel = calcularNivel(cantTarjetas,cantIdiomas);
+        nivel = calcularNivel(cantIdiomas,cantTarjetas);
 
 
         switch (nivel){
 
             case 0:
                 binding.textNivel.setText("Que esperas para comenzar?");
+                break;
             case 1:
                 binding.textNivel.setText("Nivel principiante");
                 break;

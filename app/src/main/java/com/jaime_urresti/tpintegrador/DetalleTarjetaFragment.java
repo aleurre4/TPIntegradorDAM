@@ -107,7 +107,7 @@ public class DetalleTarjetaFragment extends Fragment implements MediaPlayer.OnCo
                      e.printStackTrace();
                  }
 
-                 ClaseUtil.alerta("Tarjeta updateada perro", "renovada tarjeta",getActivity());
+                 ClaseUtil.alerta("Tarjeta modificada con exito", "TARJETA MODIFICADA",getActivity());
 
 
                  binding.buttonEditarTarjeta.setText("Editar tarjeta");
@@ -148,7 +148,7 @@ public class DetalleTarjetaFragment extends Fragment implements MediaPlayer.OnCo
                     e.printStackTrace();
                 }
 
-                ClaseUtil.alerta("Tarjeta eliminada tigreee", "rip tarjeta",getActivity());
+                ClaseUtil.alerta("Tarjeta eliminada con exito", "TARJETA ELIMINADA",getActivity());
 
 
 
